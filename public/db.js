@@ -59,7 +59,7 @@ function checkDatabase() {
 
             // Clear existing entries because our bulk add was successful
             currentStore.clear();
-            console.log('Clearing store 🧹');
+            console.log('Cleaning 🧹');
           }
         });
     }
@@ -67,7 +67,7 @@ function checkDatabase() {
 }
 
 request.onsuccess = function (e) {
-  console.log('success');
+  console.log('Demon Time 😈');
   db = e.target.result;
 
   // Check if app is online before reading from db
