@@ -12,14 +12,18 @@ const FILES_TO_CACHE = [
 ];
 const PRECACHE = 'precache-v1';
 const RUNTIME = 'runtime';
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches
-            .open(PRECACHE)
-            .then((cache) => cache.addAll(FILES_TO_CACHE))
-            .then(self.skipWaiting())
+
+self.addEventListener("install", function (evt) {
+    evt.waitUntil(
+        caches.open(PRECACHE).then(cache => {
+            console.log("Your files were pre-cached successfully!");
+            return cache.addAll(FILES_TO_CACHE);
+        })
     );
+
+    self.skipWaiting();
 });
+
 // The activate handler takes care of cleaning up old caches.
 self.addEventListener('activate', (event) => {
     const currentCaches = [PRECACHE, RUNTIME];
